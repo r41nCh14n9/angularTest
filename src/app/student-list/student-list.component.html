@@ -1,0 +1,17 @@
+<!-- <h2>Student List</h2>
+
+<div *ngFor = "let s of students">
+    {{s.sname}} 
+</div> -->
+
+<mat-card>
+<mat-card-header>Student List</mat-card-header>
+<mat-card-content>
+    <mat-list>
+        <mat-list-item *ngFor = "let s of students">
+            <img mat-list-avatar src="{{s.giphyUrl}}" alt="{{s.sname}}">
+            <h3 mat-line>{{s.sname}}</h3>
+        </mat-list-item>
+    </mat-list>
+</mat-card-content>
+</mat-card>
