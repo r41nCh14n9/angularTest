@@ -5,13 +5,23 @@
 </div> -->
 
 <mat-card>
-<mat-card-header>Student List</mat-card-header>
-<mat-card-content>
-    <mat-list>
-        <mat-list-item *ngFor = "let s of students">
-            <img mat-list-avatar src="{{s.giphyUrl}}" alt="{{s.sname}}">
-            <h3 mat-line>{{s.sname}}</h3>
-        </mat-list-item>
-    </mat-list>
-</mat-card-content>
+    <mat-card-header>Student List</mat-card-header>
+    <mat-card-content>
+        <mat-list>
+            <mat-list-item *ngFor="let s of students">
+                <a>{{s.sid}}</a>
+                <a mat-button [routerLink]="['/student-edit', s.sid]">
+                    <!-- <img mat-list-avatar src="{{s.giphyUrl}}" alt="{{s.sname}}"> -->
+                    {{s.sname}}
+                </a>
+                <a>{{s.sbday}}</a>
+                <a>{{s.ssex}}</a>
+                <a>{{s.smail}}</a>
+                <a>{{s.sacc}}</a>
+                <a>{{s.spwd}}</a>
+                <!-- <h2 mat-line></h2> -->
+            </mat-list-item>
+        </mat-list>
+    </mat-card-content>
+    <button mat-fab color="primary" [routerLink]="['/student-add']">Add</button>
 </mat-card>

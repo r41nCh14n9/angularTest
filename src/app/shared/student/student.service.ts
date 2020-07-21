@@ -18,13 +18,14 @@ export class StudentService {
   }
 
   get(id: string){
-    return this.http.get(this.API+'/'+id);
+    return this.http.get(this.API+'/student/get/'+id);
   }
 
   save(student: any): Observable<any>{
     let result: Observable<Object>;
     if(student['href']){
-      result = this.http.put(student.href, student);
+      //result = this.http.put(student.href, student);
+      result = this.http.post(this.API+"/register/registerProcess",student)
     }else{
       result = this.http.post(this.API,student)
     }

@@ -8,23 +8,42 @@ import { MatListModule } from "@angular/material/list";
 import { MatToolbarModule } from "@angular/material/toolbar";
 
 
-// // import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { StudentListComponent } from "./student-list/student-list.component";
-
 
 
 import { HttpClientModule } from '@angular/common/http';
 import { StudentService } from './shared/student/student.service';
 import { GiphyService } from './shared/giphy/giphy.service';
-import { StudentEditComponent } from './student-edit/student-edit.component';
+
+
+import { FormsModule } from '@angular/forms';
+import { RouterModule, Routes } from '@angular/router'
+import { StudentListComponent } from './student-list/student-list.component';
+
+
+
+// const appRoutes : Routes[
+//   { path: '', redirectTo: '/student-list', pathMatch: 'full'},
+//   { 
+//     path: 'student-list',
+//     component: StudentListComponent
+//   },
+//   {
+//     path: 'student-add',
+//     component: StudentEditComponent
+//   },
+//   {
+//     path: 'student-edit/:id',
+//     component: StudentEditComponent
+//   }
+// ];
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    StudentListComponent,
-    StudentEditComponent
+    routingComponents,
   ],
   imports: [
     BrowserModule,
@@ -35,6 +54,8 @@ import { StudentEditComponent } from './student-edit/student-edit.component';
     MatInputModule,
     MatListModule,
     MatToolbarModule,
+    FormsModule,
+    AppRoutingModule
   ],
   providers: [StudentService, GiphyService],
   bootstrap: [AppComponent]
