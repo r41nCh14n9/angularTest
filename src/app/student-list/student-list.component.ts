@@ -10,6 +10,8 @@ import { Student } from '../student';
 })
 export class StudentListComponent implements OnInit{
   students: Student[];
+  displayedColumns: string[] = ['sid','sname','sbday','ssex','smail','sacc'];//,'spwd'
+  dataSource: Student[];
   // studentAvatar: URL[];
   //Array<any>;
 
@@ -21,7 +23,8 @@ export class StudentListComponent implements OnInit{
       // for (const student of this.students){
       //   this.giphyService.get(student.sname).subscribe(url => student.giphyUrl = url);
       // }
-    })
+    });
+    this.dataSource = this.students;
   }
 
 }

@@ -7,11 +7,62 @@
 <mat-card>
     <mat-card-header>Student List</mat-card-header>
     <mat-card-content>
-        <mat-list>
+        <mat-table [dataSource]="students" class="mat-elevation-z8">
+            <!-- Id Column -->
+            <ng-container matColumnDef="sid">
+                <mat-header-cell *matHeaderCellDef> Id. </mat-header-cell>
+                <mat-cell *matCellDef="let s"> {{s.sid}} </mat-cell>
+            </ng-container>
+
+            <!-- Name Column -->
+            <ng-container matColumnDef="sname">
+                <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+                <mat-cell *matCellDef="let s">
+                    <a mat-button [routerLink]="['/student-edit', s.sid]">
+                        {{s.sname}}
+                    </a>
+                </mat-cell>
+            </ng-container>
+
+            <!-- Birthday Column -->
+            <ng-container matColumnDef="sbday">
+                <mat-header-cell *matHeaderCellDef> Birthday </mat-header-cell>
+                <mat-cell *matCellDef="let s"> {{s.sbday}} </mat-cell>
+            </ng-container>
+
+            <!-- Sex Column -->
+            <ng-container matColumnDef="ssex">
+                <mat-header-cell *matHeaderCellDef> Sex </mat-header-cell>
+                <mat-cell *matCellDef="let s"> {{s.ssex}} </mat-cell>
+            </ng-container>
+
+            <!-- Email Column -->
+            <ng-container matColumnDef="smail">
+                <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
+                <mat-cell *matCellDef="let s"> {{s.smail}} </mat-cell>
+            </ng-container>
+
+            <!-- Account Name Column -->
+            <ng-container matColumnDef="sacc">
+                <mat-header-cell *matHeaderCellDef> Account Name </mat-header-cell>
+                <mat-cell *matCellDef="let s"> {{s.sacc}} </mat-cell>
+            </ng-container>
+
+            <!-- Password Column -->
+            <!-- <ng-container matColumnDef="spwd">
+                <mat-header-cell *matHeaderCellDef> Password </mat-header-cell>
+                <mat-cell *matCellDef="let s"> {{s.spwd}} </mat-cell>
+            </ng-container> -->
+
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+
+        <!-- <mat-list>
             <mat-list-item *ngFor="let s of students">
                 <a>{{s.sid}}</a>
                 <a mat-button [routerLink]="['/student-edit', s.sid]">
-                    <!-- <img mat-list-avatar src="{{s.giphyUrl}}" alt="{{s.sname}}"> -->
+                    <img mat-list-avatar src="{{s.giphyUrl}}" alt="{{s.sname}}">
                     {{s.sname}}
                 </a>
                 <a>{{s.sbday}}</a>
@@ -19,9 +70,9 @@
                 <a>{{s.smail}}</a>
                 <a>{{s.sacc}}</a>
                 <a>{{s.spwd}}</a>
-                <!-- <h2 mat-line></h2> -->
+                <h2 mat-line></h2> 
             </mat-list-item>
-        </mat-list>
+        </mat-list> -->
     </mat-card-content>
     <button mat-fab color="primary" [routerLink]="['/student-add']">Add</button>
 </mat-card>

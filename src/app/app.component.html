@@ -2,13 +2,24 @@
   <span>Welcome to {{title}}!</span>
 </mat-toolbar>
 
-
 <div class="content" role="main">
   <!-- <div style="text-align:center">
-    <h1>Welcome to {{title}}!</h1>
-  </div> -->
-  
+      <h1>Welcome to {{title}}!</h1>
+    </div> -->
+
   <!-- <app-student-list></app-student-list> -->
-  <router-outlet></router-outlet>
+  <mat-card>
+    <!-- <mat-card-header>
+        Home Page
+      </mat-card-header> -->
+    <mat-card-content>
+      <a mat-button routerLink="login">Login</a>
+      <a mat-button routerLink="register">Register</a>
+      <a mat-button routerLink="student-list">Student List</a>
+    </mat-card-content>
+  </mat-card>
+  <mat-card>
+    <router-outlet></router-outlet>
+  </mat-card>
 </div>
 

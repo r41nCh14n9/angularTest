@@ -6,20 +6,23 @@ import { MatCardModule } from "@angular/material/card";
 import { MatInputModule } from "@angular/material/input";
 import { MatListModule } from "@angular/material/list";
 import { MatToolbarModule } from "@angular/material/toolbar";
+import { MatTableModule } from '@angular/material/table';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule, Routes } from '@angular/router'
 
 
 import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
-
-
-import { HttpClientModule } from '@angular/common/http';
 import { StudentService } from './shared/student/student.service';
 import { GiphyService } from './shared/giphy/giphy.service';
 
-
-import { FormsModule } from '@angular/forms';
-import { RouterModule, Routes } from '@angular/router'
 import { StudentListComponent } from './student-list/student-list.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { StudentInfoComponent } from './student-info/student-info.component';
+
 
 
 
@@ -44,6 +47,9 @@ import { StudentListComponent } from './student-list/student-list.component';
   declarations: [
     AppComponent,
     routingComponents,
+    LoginComponent,
+    RegisterComponent,
+    StudentInfoComponent
   ],
   imports: [
     BrowserModule,
@@ -55,7 +61,10 @@ import { StudentListComponent } from './student-list/student-list.component';
     MatListModule,
     MatToolbarModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatTableModule,
+    MatFormFieldModule,
+    ReactiveFormsModule
   ],
   providers: [StudentService, GiphyService],
   bootstrap: [AppComponent]

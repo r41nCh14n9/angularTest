@@ -60,10 +60,10 @@ export class StudentEditComponent implements OnInit, OnDestroy {
     }, error => console.error(error))
   }
 
-  remove(href){
-    this.studentService.remove(href).subscribe(result => {
-      this.gotoList();
-    }, error => console.error(error))
-  }
+  // remove(href){
+  //   this.studentService.remove(href).subscribe(result => {
+  //     this.gotoList();
+  //   }, error => console.error(error))
+  // }
 
 }

@@ -21,6 +21,10 @@ export class StudentService {
     return this.http.get(this.API+'/student/get/'+id);
   }
 
+  login(student: any): Observable<any>{
+    return  this.http.post(this.API+"/login/loginProcess",student);
+  }
+
   save(student: any): Observable<any>{
     let result: Observable<Object>;
     if(student['href']){
