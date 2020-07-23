@@ -5,6 +5,7 @@ import { StudentListComponent } from './student-list/student-list.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { StudentInfoComponent } from './student-info/student-info.component';
+import { MustLoginComponent } from './must-login/must-login.component';
 
 
 
@@ -19,11 +20,11 @@ const routes: Routes = [
     component: StudentEditComponent
   },
   {
-    path: 'student-edit/:id',
+    path: 'student-edit',
     component: StudentEditComponent
   },
   {
-    path: 'student-info/:id',
+    path: 'student-info',
     component: StudentInfoComponent
   },
   {
@@ -33,6 +34,10 @@ const routes: Routes = [
   {
     path: 'register',
     component: RegisterComponent
+  },
+  {
+    path: 'must-login',
+    component: MustLoginComponent
   }
 ];
 

@@ -3,7 +3,7 @@
 <div *ngFor = "let s of students">
     {{s.sname}} 
 </div> -->
-
+<!-- *ngIf="{{logined}}" -->
 <mat-card>
     <mat-card-header>Student List</mat-card-header>
     <mat-card-content>
@@ -33,7 +33,7 @@
             <!-- Sex Column -->
             <ng-container matColumnDef="ssex">
                 <mat-header-cell *matHeaderCellDef> Sex </mat-header-cell>
-                <mat-cell *matCellDef="let s"> {{s.ssex}} </mat-cell>
+                <mat-cell *matCellDef="let s"> {{s.ssex==1? '男':s.ssex==0?'女':'其他'}} </mat-cell>
             </ng-container>
 
             <!-- Email Column -->
@@ -76,3 +76,4 @@
     </mat-card-content>
     <button mat-fab color="primary" [routerLink]="['/student-add']">Add</button>
 </mat-card>
+{{logined}}

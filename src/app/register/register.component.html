@@ -1,1 +1,53 @@
-<p>register works!</p>
+<mat-card>
+    <form #loginForm="ngForm" (ngSubmit)="onSubmit()">
+
+        <!-- AccountName column -->
+        <mat-form-field appearance="fill">
+            <mat-label>Enter your AccountName</mat-label>
+            <input matInput placeholder="AccountName" name="account" [(ngModel)]="student.sacc" required>
+        </mat-form-field><br>
+        <!-- Password column -->
+        <mat-form-field appearance="fill">
+            <mat-label>Enter your Password</mat-label>
+            <input matInput placeholder="Password" name="password" [(ngModel)]="student.spwd" type="password" required>
+        </mat-form-field><br>
+        <!-- Name column -->
+        <mat-form-field appearance="fill">
+            <mat-label>Enter your Name</mat-label>
+            <input matInput placeholder="Name" name="name" [(ngModel)]="student.sname" required>
+        </mat-form-field><br>
+        <!-- Birthday column -->
+        <mat-form-field color="accent" appearance="fill">
+            <mat-label>Enter your Birthday</mat-label>
+            <input matInput [matDatepicker]="picker1" placeholder="Birthday" name="bday" [(ngModel)]="student.sbday">
+            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+            <mat-datepicker #picker1></mat-datepicker>
+        </mat-form-field><br>
+        <!-- Sex column -->
+        <label>Sex Type</label>
+        <p></p>
+        <mat-radio-group [formControl]="sexLabelControl" [(ngModel)]="student.ssex">
+            <mat-radio-button value="1">男</mat-radio-button>
+            <mat-radio-button value="0">女</mat-radio-button>
+            <mat-radio-button value="2">其他</mat-radio-button>
+        </mat-radio-group>
+        <p></p>
+        <!-- Email column -->
+        <mat-form-field appearance="fill">
+            <mat-label>Enter your Email</mat-label>
+            <input matInput placeholder="Email" name="email" [(ngModel)]="student.smail" required>
+        </mat-form-field><br>
+
+
+        <mat-card-actions>
+            <button mat-raised-button color="primary" type="submit" [disabled]="loginForm.invalid">Submit</button>
+        </mat-card-actions>
+    </form>
+
+</mat-card>
+<mat-card>
+    <p>{{student.ssex}}</p>
+    <p>{{loginForm.value}}</p>
+    <p>{{testResult | json}}</p>
+
+</mat-card>

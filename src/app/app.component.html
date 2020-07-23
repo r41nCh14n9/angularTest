@@ -13,10 +13,14 @@
         Home Page
       </mat-card-header> -->
     <mat-card-content>
-      <a mat-button routerLink="login">Login</a>
-      <a mat-button routerLink="register">Register</a>
-      <a mat-button routerLink="student-list">Student List</a>
+      <a mat-button routerLink="student-info" skipLocationChange>Student Information</a>
+      <a mat-button routerLink="student-list" skipLocationChange>Student List</a>
+      <a mat-button routerLink="login" skipLocationChange>Login</a>
+      <a mat-button routerLink="register" skipLocationChange>Register</a>
     </mat-card-content>
+    <!-- <span class="material-icons">
+      autorenew
+      </span> -->
   </mat-card>
   <mat-card>
     <router-outlet></router-outlet>

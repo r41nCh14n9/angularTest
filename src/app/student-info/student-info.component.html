@@ -1,1 +1,56 @@
-<p>student-info works!</p>
+<!-- <p>student-info works!</p> -->
+<mat-card>
+    <!-- <mat-card-header>Student List</mat-card-header> -->
+    <mat-card-content *ngIf="logined">
+        <!-- sid -->
+        <mat-card>
+            <th>sid</th>
+            <td>{{student.sid}}</td>
+        </mat-card>
+        <!-- <mat-divider></mat-divider> -->
+        <!-- sname -->
+        <mat-card>
+            <th>sname</th>
+            <td>{{student.sname}}</td>
+        </mat-card>
+        <!-- <mat-divider></mat-divider> -->
+        <!-- ssex -->
+        <mat-card>
+            <th>ssex</th>
+            <td>{{student.ssex==1? '男':student.ssex==0?'女':'其他'}}</td>
+        </mat-card>
+        <!-- <mat-divider></mat-divider> -->
+        <!-- sbday -->
+        <mat-card>
+            <th>sbday</th>
+            <td>{{student.sbday}}</td>
+        </mat-card>
+        <!-- <mat-divider></mat-divider> -->
+        <!-- smail -->
+        <mat-card>
+            <th>smail</th>
+            <td>{{student.smail}}</td>
+        </mat-card>
+        <!-- <mat-divider></mat-divider> -->
+        <!-- sacc -->
+        <mat-card>
+            <th>sacc</th>
+            <td>{{student.sacc}}</td>
+        </mat-card>
+        <!-- <mat-divider></mat-divider> -->
+        <!-- spwd -->
+        <mat-card>
+            <th>spwd</th>
+            <td>{{student.spwd}}</td>
+        </mat-card>
+        
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-raised-button color="primary" (click)="back2home()">Back</button>
+        <button mat-raised-button color="primary" 
+                     type="button" [disabled] = "!student" (click)="logout()">Logout</button>
+        <!-- (click)="" *ngIf="student"-->
+    </mat-card-actions>
+    <!-- {{student | json}} -->
+
+</mat-card>

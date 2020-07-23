@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { StudentService } from '../shared/student/student.service';
 import { GiphyService } from '../shared/giphy/giphy.service';
 import { Student } from '../student';
+import { IfStmt } from '@angular/compiler';
+import { Route } from '@angular/compiler/src/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-student-list',
@@ -9,22 +12,32 @@ import { Student } from '../student';
   styleUrls: ['./student-list.component.css']
 })
 export class StudentListComponent implements OnInit{
+  logined: boolean = false;
   students: Student[];
   displayedColumns: string[] = ['sid','sname','sbday','ssex','smail','sacc'];//,'spwd'
   dataSource: Student[];
   // studentAvatar: URL[];
   //Array<any>;
 
-  constructor(private studentService: StudentService, private giphyService: GiphyService) { }
+  constructor(
+    private studentService: StudentService, 
+    private giphyService: GiphyService,
+    private router: Router,
+    ) { }
 
   ngOnInit() {
-    this.studentService.getAll().subscribe(data => {
-      this.students = data;
-      // for (const student of this.students){
-      //   this.giphyService.get(student.sname).subscribe(url => student.giphyUrl = url);
-      // }
-    });
-    this.dataSource = this.students;
+    if(window.sessionStorage.getItem('student')){
+      this.studentService.getAll().subscribe(data => {
+        this.students = data;
+      });
+      this.dataSource = this.students;
+    }else{
+      this.mustLogin();
+    }
+    
   }
 
+  mustLogin(){
+    this.router.navigate(['/must-login']);
+  }
 }

@@ -10,8 +10,9 @@
         <input matInput placeholder="Password" [formControl]="spwd" required>
         <mat-error *ngIf="spwd.invalid">{{getErrorMessage()}}{{err.get("spwd")}}</mat-error>
     </mat-form-field> -->
-    
-    <form #loginForm="ngForm" (ngSubmit)="ngSubmit()">
+
+    <!-- #loginForm="ngForm" -->
+    <form #loginForm="ngForm" (ngSubmit)="onSubmit()">
 
         <mat-form-field appearance="fill">
             <mat-label>Enter your AccountName</mat-label>
@@ -19,14 +20,14 @@
             <mat-error *ngIf="sacc.invalid">{{getErrorMessage()}}{{err.get("sacc")}}</mat-error>
         </mat-form-field><br>
         <mat-form-field appearance="fill">
-            <mat-label>Enter your Password</mat-label>
-            <input matInput type="password" placeholder="Password" [formControl]="spwd" [(ngModel)]="student.spwd" required>
+            <mat-label id = "fff">Enter your Password</mat-label>
+            <input matInput placeholder="Password" [formControl]="spwd" [(ngModel)]="student.spwd" type="password" required>
             <mat-error *ngIf="spwd.invalid">{{getErrorMessage()}}{{err.get("spwd")}}</mat-error>
         </mat-form-field>
 
         <mat-card-actions>
-            <button mat-raised-button color="primary" [disabled]= "!loginForm.form.valid"
-                type="submit" >Submit</button>
+            <button mat-raised-button color="primary"  
+                [disabled]= "loginForm.invalid"type="submit" >Submit</button>
         </mat-card-actions>
     </form>
 
@@ -34,5 +35,9 @@
 
 </div>
 <mat-card>
+    <!-- {{loginForm.value}} -->
+    <!-- {{loginForm.status}} -->
+    <!-- {{loginForm.invalid}} -->
     {{result | json}}
+    
 </mat-card>
