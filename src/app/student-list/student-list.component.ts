@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { StudentService } from '../shared/student/student.service';
 import { GiphyService } from '../shared/giphy/giphy.service';
 import { Student } from '../student';
 import { IfStmt } from '@angular/compiler';
 import { Route } from '@angular/compiler/src/core';
 import { Router } from '@angular/router';
+import {MatSort} from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-student-list',
@@ -13,9 +15,12 @@ import { Router } from '@angular/router';
 })
 export class StudentListComponent implements OnInit{
   logined: boolean = false;
-  students: Student[];
+  // students: Student[];
   displayedColumns: string[] = ['sid','sname','sbday','ssex','smail','sacc'];//,'spwd'
-  dataSource: Student[];
+  // dataSource: Student[];
+  dataSource = new MatTableDataSource<Student[]>();
+  @ViewChild(MatSort,{static: true})
+  sort: MatSort;
   // studentAvatar: URL[];
   //Array<any>;
 
@@ -28,9 +33,10 @@ export class StudentListComponent implements OnInit{
   ngOnInit() {
     if(window.sessionStorage.getItem('student')){
       this.studentService.getAll().subscribe(data => {
-        this.students = data;
+        this.dataSource.data = data;
+        this.dataSource.sort = this.sort;
       });
-      this.dataSource = this.students;
+      // this.dataSource = this.students;
     }else{
       this.mustLogin();
     }
@@ -38,6 +44,6 @@ export class StudentListComponent implements OnInit{
   }
 
   mustLogin(){
-    this.router.navigate(['/must-login']);
+    this.router.navigate(['/must-login'],{skipLocationChange:true});
   }
 }

@@ -13,6 +13,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatSortModule } from '@angular/material/sort';
+
 
 
 import { AppRoutingModule, routingComponents } from './app-routing.module';
@@ -26,6 +28,7 @@ import { RegisterComponent } from './register/register.component';
 import { StudentInfoComponent } from './student-info/student-info.component';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MustLoginComponent } from './must-login/must-login.component';
+import { ForgetPwdComponent } from './forget-pwd/forget-pwd.component';
 
 
 
@@ -54,7 +57,8 @@ import { MustLoginComponent } from './must-login/must-login.component';
     LoginComponent,
     RegisterComponent,
     StudentInfoComponent,
-    MustLoginComponent
+    MustLoginComponent,
+    ForgetPwdComponent
   ],
   imports: [
     BrowserModule,
@@ -73,6 +77,7 @@ import { MustLoginComponent } from './must-login/must-login.component';
     MatRadioModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatSortModule,
   ],
   providers: [
     StudentService, 

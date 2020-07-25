@@ -1,0 +1,24 @@
+
+<mat-card-header>Forget Password</mat-card-header>
+<mat-card-content>
+    <form [formGroup]=resetForm (ngSubmit)="onSubmit()">
+
+        <mat-form-field appearance="fill">
+            <mat-label>Enter your AccountName</mat-label>
+            <input matInput placeholder="AccountName" formControlName="sacc" [(ngModel)]="student.sacc" name="sacc" required>
+            <mat-error *ngIf="resetForm.get('sacc').invalid">{{getErrorMessage().get("sacc")}}</mat-error>
+        </mat-form-field><br>
+        <mat-form-field appearance="fill">
+            <mat-label>Enter your Email</mat-label>
+            <input matInput placeholder="Email" formControlName="smail" [(ngModel)]="student.smail" name="smail" required>
+            <mat-error *ngIf="resetForm.get('smail').invalid">{{getErrorMessage().get("smail")}}</mat-error>
+        </mat-form-field>
+        <!-- {{resetForm.get('smail').errors | json}} -->
+        
+        <mat-card-actions>
+            <button mat-raised-button color="primary" routerLink="/login">Back to Login</button>
+            <button mat-raised-button [disabled]="resetForm.invalid" color="primary" type="submit" id="submit">Submit</button>
+        </mat-card-actions>
+    </form>
+</mat-card-content>
+

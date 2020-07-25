@@ -1,53 +1,72 @@
 <mat-card>
-    <form #loginForm="ngForm" (ngSubmit)="onSubmit()">
+    <mat-card-header>
+        Register Form
+    </mat-card-header>
+    <!-- {{checkAcc()}} -->
+    <!-- <mat-card>
+        Register Form
+    </mat-card> -->
+    <mat-card-content>
+        <form [formGroup]=registerForm (ngSubmit)="onSubmit()">
 
-        <!-- AccountName column -->
-        <mat-form-field appearance="fill">
-            <mat-label>Enter your AccountName</mat-label>
-            <input matInput placeholder="AccountName" name="account" [(ngModel)]="student.sacc" required>
-        </mat-form-field><br>
-        <!-- Password column -->
-        <mat-form-field appearance="fill">
-            <mat-label>Enter your Password</mat-label>
-            <input matInput placeholder="Password" name="password" [(ngModel)]="student.spwd" type="password" required>
-        </mat-form-field><br>
-        <!-- Name column -->
-        <mat-form-field appearance="fill">
-            <mat-label>Enter your Name</mat-label>
-            <input matInput placeholder="Name" name="name" [(ngModel)]="student.sname" required>
-        </mat-form-field><br>
-        <!-- Birthday column -->
-        <mat-form-field color="accent" appearance="fill">
-            <mat-label>Enter your Birthday</mat-label>
-            <input matInput [matDatepicker]="picker1" placeholder="Birthday" name="bday" [(ngModel)]="student.sbday">
-            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-            <mat-datepicker #picker1></mat-datepicker>
-        </mat-form-field><br>
-        <!-- Sex column -->
-        <label>Sex Type</label>
-        <p></p>
-        <mat-radio-group [formControl]="sexLabelControl" [(ngModel)]="student.ssex">
-            <mat-radio-button value="1">男</mat-radio-button>
-            <mat-radio-button value="0">女</mat-radio-button>
-            <mat-radio-button value="2">其他</mat-radio-button>
-        </mat-radio-group>
-        <p></p>
-        <!-- Email column -->
-        <mat-form-field appearance="fill">
-            <mat-label>Enter your Email</mat-label>
-            <input matInput placeholder="Email" name="email" [(ngModel)]="student.smail" required>
-        </mat-form-field><br>
-
-
-        <mat-card-actions>
-            <button mat-raised-button color="primary" type="submit" [disabled]="loginForm.invalid">Submit</button>
-        </mat-card-actions>
-    </form>
+            <!-- AccountName column -->
+            <mat-form-field appearance="fill">
+                <mat-label>Enter your AccountName</mat-label>
+                <input matInput placeholder="AccountName" formControlName="sacc" name="account" [(ngModel)]="student.sacc" (blur)="checkAcc()" required>
+                <mat-error *ngIf="registerForm.get('sacc').invalid">{{getErrorMessageMap().get('sacc')}}</mat-error>
+            </mat-form-field><br>
+            <!-- {{registerForm.get('sacc').errors | json}} -->
+            <!-- Password column -->
+            <mat-form-field appearance="fill">
+                <mat-label>Enter your Password</mat-label>
+                <input matInput placeholder="Password" formControlName="spwd" name="password" [(ngModel)]="student.spwd" type="password" required>
+                <mat-error *ngIf="registerForm.get('spwd').invalid">{{getErrorMessageMap().get('spwd')}}</mat-error>
+            </mat-form-field><br>
+            <!-- Name column -->
+            <mat-form-field appearance="fill">
+                <mat-label>Enter your Name</mat-label>
+                <input matInput placeholder="Name" formControlName="sname" name="name" [(ngModel)]="student.sname" required>
+                <mat-error *ngIf="registerForm.get('sname').invalid">{{getErrorMessageMap().get('sname')}}</mat-error>
+            </mat-form-field><br>
+            <!-- Birthday column -->
+            <mat-form-field color="accent" appearance="fill">
+                <mat-label>Enter your Birthday</mat-label>
+                <input matInput [matDatepicker]="picker1" placeholder="Birthday" formControlName="sbday" 
+                        name="bday" [(ngModel)]="student.sbday" disabled required>
+                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                <mat-datepicker #picker1 disabled="false"></mat-datepicker>
+                <mat-error *ngIf="registerForm.get('sbday').invalid">{{getErrorMessageMap().get('sbday')}}</mat-error>
+            </mat-form-field><br>
+            <!-- Sex column -->
+            <label>Sex Type</label>
+            <p></p>
+            <mat-radio-group formControlName="ssex" [(ngModel)]="student.ssex">
+                <mat-radio-button value="1">男</mat-radio-button>
+                <mat-radio-button value="0">女</mat-radio-button>
+                <mat-radio-button value="2">其他</mat-radio-button>
+            </mat-radio-group>
+            <mat-error *ngIf="registerForm.get('ssex').invalid && registerForm.controls['ssex']?.touched">{{getErrorMessageMap().get('ssex')}}</mat-error>
+            
+            <p></p>
+            <!-- Email column -->
+            <mat-form-field appearance="fill">
+                <mat-label>Enter your Email</mat-label>
+                <input matInput placeholder="Email" formControlName="smail" name="email" [(ngModel)]="student.smail" required>
+                <mat-error *ngIf="registerForm.get('smail').invalid">{{getErrorMessageMap().get('smail')}}</mat-error>
+            </mat-form-field><br>
+    
+    
+            <mat-card-actions>
+                <button mat-raised-button color="primary" routerLink="/login">Back to Login</button>
+                <button mat-raised-button color="primary" type="submit" [disabled]="registerForm.invalid">Submit</button>
+            </mat-card-actions>
+        </form>
+    </mat-card-content>
 
 </mat-card>
-<mat-card>
+<!-- <mat-card>
     <p>{{student.ssex}}</p>
     <p>{{loginForm.value}}</p>
     <p>{{testResult | json}}</p>
 
-</mat-card>
+</mat-card> -->

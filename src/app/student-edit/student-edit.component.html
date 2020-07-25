@@ -1,38 +1,40 @@
 <mat-card>
+    <mat-card-header>Edit Page</mat-card-header>
+    <mat-card-content>
+        <form #studentForm = "ngForm" (ngSubmit)="save(studentForm.value)">
+            <mat-card-header>
+                <mat-card-title> </mat-card-title>
+            </mat-card-header> 
+            <!-- {{student.sname ? 'Edit' : 'Add'}} -->
+            <mat-card-content>
+                <input type='hidden' name="href" [(ngModel)] = "studentUrl">
+                <mat-form-field>
+                    <input matInput placeholder="Student Name" [(ngModel)] = "student.sname"
+                            required name="sname" #sname>
+                </mat-form-field><br>
+                <mat-form-field>
+                    <input matInput placeholder="Account Name" [(ngModel)] = "student.sacc"
+                            required name="sacc" #sacc> 
+                </mat-form-field><br>
+                <mat-form-field>
+                    <input matInput placeholder="Account Password" [(ngModel)] = "student.spwd"
+                            required name="spwd" #spwd>
+                </mat-form-field>
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-raised-button color="primary" type="submit"
+                        [disabled] = "!studentForm.form.valid">Save</button>
+                <button mat-raised-button color="secondary" (click)="remove(studentUrl)"
+                        *ngIf="studentUrl" type="button">Delete</button>
+                <a mat-button routerLink="/student-list">Cancel</a>
+            </mat-card-actions>
+            <!-- <mat-card-footer>
+                <div class="giphy">
+                    <img mat-list-avatar src="{{student.giphyUrl}}" alt="{{student.sname}}">
+                </div>
+            </mat-card-footer> -->
+        </form>
+    </mat-card-content>
     
-    <form #studentForm = "ngForm" (ngSubmit)="save(studentForm.value)">
-        <mat-card-header>
-            <mat-card-title> </mat-card-title>
-        </mat-card-header> 
-        <!-- {{student.sname ? 'Edit' : 'Add'}} -->
-        <mat-card-content>
-            <input type='hidden' name="href" [(ngModel)] = "studentUrl">
-            <mat-form-field>
-                <input matInput placeholder="Student Name" [(ngModel)] = "student.sname"
-                        required name="sname" #sname>
-            </mat-form-field><br>
-            <mat-form-field>
-                <input matInput placeholder="Account Name" [(ngModel)] = "student.sacc"
-                        required name="sacc" #sacc> 
-            </mat-form-field><br>
-            <mat-form-field>
-                <input matInput placeholder="Account Password" [(ngModel)] = "student.spwd"
-                        required name="spwd" #spwd>
-            </mat-form-field>
-        </mat-card-content>
-        <mat-card-actions>
-            <button mat-raised-button color="primary" type="submit"
-                    [disabled] = "!studentForm.form.valid">Save</button>
-            <button mat-raised-button color="secondary" (click)="remove(studentUrl)"
-                    *ngIf="studentUrl" type="button">Delete</button>
-            <a mat-button routerLink="/student-list">Cancel</a>
-        </mat-card-actions>
-        <!-- <mat-card-footer>
-            <div class="giphy">
-                <img mat-list-avatar src="{{student.giphyUrl}}" alt="{{student.sname}}">
-            </div>
-        </mat-card-footer> -->
-    </form>
 </mat-card>
-
-{{studentForm | json}}
+<!-- {{studentForm | json}} -->

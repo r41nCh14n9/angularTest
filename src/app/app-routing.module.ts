@@ -6,11 +6,12 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { StudentInfoComponent } from './student-info/student-info.component';
 import { MustLoginComponent } from './must-login/must-login.component';
+import { ForgetPwdComponent } from './forget-pwd/forget-pwd.component';
 
 
 
 const routes: Routes = [
-  // { path: '', redirectTo: '/student-list', pathMatch: 'full'},
+  { path: '', redirectTo: '/login', pathMatch: 'full'},
   { 
     path: 'student-list',
     component: StudentListComponent
@@ -38,7 +39,11 @@ const routes: Routes = [
   {
     path: 'must-login',
     component: MustLoginComponent
-  }
+  },
+  {
+    path: 'forget-pwd',
+    component: ForgetPwdComponent
+  },
 ];
 
 @NgModule({

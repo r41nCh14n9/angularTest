@@ -4,3 +4,8 @@
   mat-form-field{
     width: 220px;
   }
+
+  mat-card-header{
+    margin: 20px;
+    font-size: large;
+  }

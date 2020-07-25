@@ -36,7 +36,7 @@ export class StudentInfoComponent implements OnInit {
   }
 
   mustLogin(){
-    this.router.navigate(['/must-login']);
+    this.router.navigate(['/must-login'],{skipLocationChange:true});
   }
 
 

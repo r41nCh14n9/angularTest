@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators, FormGroup } from '@angular/forms';
+import { FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { Student } from '../student';
 import { StudentService } from '../shared/student/student.service';
-import { StudentInfoComponent } from '../student-info/student-info.component';
 import { Router } from '@angular/router';
 
 
@@ -13,44 +12,47 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent{//implements OnInit
-  // loginForm = new FormGroup({
-    sacc = new FormControl(null,[Validators.required, Validators.maxLength(30)]);
-    spwd = new FormControl(null,[Validators.required, Validators.maxLength(30)]);
+  loginForm = new FormGroup({
+    sacc : new FormControl(null,[Validators.required, Validators.maxLength(30)]),
+    spwd : new FormControl(null,[Validators.required, Validators.maxLength(30)]),
+  });
+    // sacc = new FormControl(null,[Validators.required, Validators.maxLength(30)]);
+    // spwd = new FormControl(null,[Validators.required, Validators.maxLength(30)]);
 
-  // });
+  
 
-  err = new Map<string, string>();
+  
   student: Student;
   result: Student;
 
   constructor(
     private studentService:StudentService,
     private router: Router,
+    private fb: FormBuilder
     ) { 
     this.student = new Student;
   }
 // ngOnInit(): void {}
 
 
-getErrorMessage() {
-  let result1: string = '';
-  let result2: string = '';
+getErrorMessageMap(): Map<string, string>{
+  let err = new Map<string, string>();
   
   //validate sacc
-  if (this.sacc.hasError('required')) {
-    result1 = 'You must enter a value';
-  }else if(this.sacc.hasError('maxlength')){
-    result1 = 'Not a valid sacc';
+  if (this.loginForm.get('sacc').hasError('required')) {
+    err.set("sacc",'You must enter a value');
+  }else if(this.loginForm.get('sacc').hasError('maxlength')){
+    err.set("sacc",'Not a valid sacc');
   }
-  this.err.set("sacc",result1);
 
   //validate spwd
-  if (this.spwd.hasError('required')) {
-    result2 = 'You must enter a value';
-  }else if(this.spwd.hasError('maxlength')){
-    result2 = 'Not a valid spwd';
+  if (this.loginForm.get('spwd').hasError('required')) {
+    err.set("spwd",'You must enter a value');
+  }else if(this.loginForm.get('spwd').hasError('maxlength')){
+    err.set("spwd",'Not a valid spwd');
   }
-  this.err.set("spwd",result2);
+
+  return err;
 }
 
 onSubmit(){
@@ -72,6 +74,10 @@ onSubmit(){
 
 gotoInfo(){
   this.router.navigate(['/student-info']);
+}
+
+goResetPwd(){
+  this.router.navigate(['forget-pwd']);
 }
   
 }
