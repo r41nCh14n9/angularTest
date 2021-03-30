@@ -111,7 +111,7 @@ export class RegisterComponent implements OnInit {
   }
 
   validateEmail(c: FormControl) {
-    let EMAIL_REGEXP = /^([A-Za-z0-9_\-\.])+\@(163.com|qq.com|42du.cn|yahoo.com|yahoo.com.tw|google.com)$/;
+    let EMAIL_REGEXP = /^([A-Za-z0-9_\-\.])+\@(163.com|qq.com|42du.cn|yahoo.com|yahoo.com.tw|gmail.com)$/;
     return EMAIL_REGEXP.test(c.value) ? null : {
       validateEmail: {
         valid: false
