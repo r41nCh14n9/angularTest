@@ -29,6 +29,7 @@ import { StudentInfoComponent } from './student-info/student-info.component';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MustLoginComponent } from './must-login/must-login.component';
 import { ForgetPwdComponent } from './forget-pwd/forget-pwd.component';
+import { StoreModule } from '@ngrx/store';
 
 
 
@@ -78,6 +79,7 @@ import { ForgetPwdComponent } from './forget-pwd/forget-pwd.component';
     MatDatepickerModule,
     MatNativeDateModule,
     MatSortModule,
+    StoreModule.forRoot({}, {}),
   ],
   providers: [
     StudentService, 
