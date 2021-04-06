@@ -123,6 +123,7 @@
   },
   "defaultProject": "springboot-angular",
   "cli": {
-    "analytics": "460d986e-8de6-491f-be0a-35fa95d9c036"
+    "analytics": "460d986e-8de6-491f-be0a-35fa95d9c036",
+    "defaultCollection": "@ngrx/schematics"
   }
 }
